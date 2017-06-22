@@ -1,0 +1,88 @@
+@import '~style/helpers';
+
+.menu {
+    width: 28px;
+    button {
+        background: #fff;
+        width: 26px;
+        height: 2px;
+        border: none;
+        text-indent: -99999px;
+        position: relative;
+        top: 27px;
+        left: 12px;
+        border-radius: 1000px;
+
+        &::before, &::after {
+            content: '';
+            background: inherit;
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            left: 0;
+        }
+
+        &:before { top: -7px; }
+        &:after { bottom: -7px; }
+    }
+
+    nav {
+        background: #673AB7;
+        width: 70%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        box-shadow: 5px 0 8px rgba(0,0,0,.2);
+        transform: translateX(-110%);
+        transition: 0.2s ease-in;
+        will-change: transform;
+
+        &.active {
+            transform: none;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .overlay {
+        background: rgba(0,0,0,.55);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.2s ease-in;
+        will-change: opacity;
+        pointer-events: none;
+
+        &.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+
+    a {
+        display: inline-block;
+        width: 100%;
+        height: 56px;
+        line-height: 56px;
+        padding: 0 15px;
+        background: rgba(255,255,255,0);
+        color: #EEE;
+        will-change: background-color;
+
+        &:hover, &:active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        &.active {
+            background: rgba(255,255,255,0.4);
+        }
+    }
+
+}
