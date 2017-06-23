@@ -8,19 +8,20 @@ export default class Menu extends Component {
     }
 
     toggleMenu = (e) => {
-        console.log(e, this);
-        this.setState({
-            menuOpen: true,
-        })
+        e.stopPropagation()
+        this.setState(state => ({ menuOpen: !state.menuOpen }));
     }
 
     render() {
         const { menuOpen } = this.state;
         return (
-            <div class={styles.menu}>
+            <div 
+                onClick={this.toggleMenu}
+                class={menuOpen ? `${styles.menu} ${styles.active}` : styles.menu}>
                 <button onClick={this.toggleMenu}>Abrir- Menu</button>
-                <nav class={menuOpen ? styles.active : ''}>
+                <nav>
                     <ul>
+                        <li><a href="#">X</a></li>
                         <li><Link activeClassName={styles.active} href="/fibonacci">Fibonacci</Link></li>
                     </ul>
                 </nav>
